@@ -4,6 +4,7 @@ import base.TestBase;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
 import model.NewClientInfo;
 import model.NewDepositInfo;
 import org.testng.annotations.Test;
@@ -17,7 +18,8 @@ import static model.Sections.DEPOSIT;
 public class Tests extends TestBase {
 
     @Epic(value = "Тестовые задания")
-    @Feature(value = "Задание 1")
+    @Feature(value = "Вклады")
+    @Story(value = "Открыть вклад")
     @Test(testName = "Задание 1",
             description = "Скачать файл со страницы")
     @Severity(NORMAL)
@@ -37,7 +39,8 @@ public class Tests extends TestBase {
     }
 
     @Epic(value = "Тестовые задания")
-    @Feature(value = "Задание 2")
+    @Feature(value = "Карты")
+    @Story(value = "Запрос карты")
     @Test(testName = "Задание 2",
             description = "Заполнение реквизитов для получения карты")
     @Severity(NORMAL)
