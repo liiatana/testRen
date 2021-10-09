@@ -18,8 +18,9 @@
         <lombok.version>1.18.20</lombok.version>
         <java-faker.version>1.0.2</java-faker.version>
         <allure-maven.version>2.10.0</allure-maven.version>
-        <sl4j.version>2.0.0-alpha5</sl4j.version>
+        <sl4j.version>1.7.32</sl4j.version>
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
     <build>
@@ -27,6 +28,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
