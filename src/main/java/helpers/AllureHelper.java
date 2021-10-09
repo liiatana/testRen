@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Формирование environment.properties для Allure
+ */
 public final class AllureHelper {
 
     public static AllureHelper allureHelper;

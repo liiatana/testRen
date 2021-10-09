@@ -16,21 +16,46 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Класс для управления тестовой средой
+ */
 @Getter
 public class TestManager {
 
+    /**
+     * Данные из local.properties
+     */
     public final Properties properties;
+    /**
+     * WebDriver
+     */
     public WebDriver wd;
+    /**
+     * Место хранения скачиваемых файлов
+     */
     public File downloadsFolder;
+    /**
+     * Главная/стартовая страница
+     */
     public String baseUrl;
     private String browser;
     private MainPage mainPage;
 
+    /**
+     * Конструктор класса управления тестовой средой
+     *
+     * @param browser браузер
+     */
     public TestManager(String browser) {
         this.browser = browser;
         properties = new Properties();
     }
 
+    /**
+     * Настроить среду
+     *
+     * @throws IOException
+     */
     public void init() throws IOException {
         properties.load(new FileReader("src\\main\\resources\\local.properties"));
 
@@ -52,12 +77,20 @@ public class TestManager {
         if (downloadsFolder.exists()) FileUtils.cleanDirectory(downloadsFolder);
     }
 
+    /**
+     * Открыть главную страницу
+     *
+     * @return mainPage
+     */
     @Step("Открыть главную страницу")
     public MainPage getMainPage() {
         wd.get(baseUrl);
         return mainPage;
     }
 
+    /**
+     * Закрыть драйвер
+     */
     public void stop() {
         wd.close();
         wd.quit();

@@ -21,13 +21,23 @@ import java.util.Objects;
 
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
+/**
+ * Базовая страница ( с методами для работы с базовыми элементами)
+ */
 public class BasePage {
+
     protected WebDriver wd;
 
     public BasePage(WebDriver wd) {
         this.wd = wd;
     }
 
+    /**
+     * Ввести данные в текстовое поле
+     *
+     * @param element поле ввода
+     * @param text    вводимая строка
+     */
     @Step("Ввести: {text}")
     protected void type(WebElement element, String text) {
         if (text != null) {
@@ -40,12 +50,25 @@ public class BasePage {
         }
     }
 
+    /**
+     * Установить положение чекбокса
+     *
+     * @param element чекбокс
+     * @param value   состояние
+     */
     @Step("Установить чекбокс в значение: {value}")
     protected void setCheckBox(WebElement element, boolean value) {
         if (element.getAttribute("class").contains("checked") != value)
             element.click();
     }
 
+    /**
+     * Подвинуть слайдер в заданное положение
+     *
+     * @param element слайдер
+     * @param value   новое положение слайдера
+     * @param range   весь диапазон значений слайдера
+     */
     @Step("Подвинуть ползунок на значение: {value}")
     protected void setSlider(WebElement element, int value, Integer[] range) {
         // Координаты slider
@@ -69,12 +92,26 @@ public class BasePage {
 
     }
 
+    /**
+     * Проскроллить до элемента
+     *
+     * @param element элемент
+     */
     protected void scrollTo(WebElement element) {
         Actions actions = new Actions(wd);
         actions.moveToElement(element);
         actions.perform();
     }
 
+    /**
+     * Скачать файл
+     *
+     * @param element  элемент
+     * @param fileName имя скачиваемого файла
+     * @param toFolder каталог назначения
+     * @return объект File
+     * @throws IOException
+     */
     protected File downloadFile(WebElement element, String fileName, File toFolder) throws IOException {
         if (element == null) return null;
         scrollTo(element);
@@ -95,6 +132,12 @@ public class BasePage {
         return downloadLink;
     }
 
+    /**
+     * Выбор значения в выпадающем списке
+     *
+     * @param element элемент
+     * @param value   выбираемое значение
+     */
     @Step("В выпадающем списке выбрать: {value}")
     protected void setDropdownList(WebElement element, String value) {
         //раскрыть выпадающий список

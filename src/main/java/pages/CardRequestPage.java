@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * Страница для заполнения заявки на карту
+ */
 public class CardRequestPage extends BasePage {
 
     @FindBy(name = "ClientLastName")

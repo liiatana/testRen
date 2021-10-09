@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * Страница информации о карте
+ */
 public class CardInfoPage extends BasePage {
 
     @FindBy(xpath = "//footer[@class='advertising__footer']/*//*[contains(@class,'button')]")

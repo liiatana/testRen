@@ -11,6 +11,9 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Страница для заполнения данных вклада
+ */
 public class DepositRequestPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='calculator__content']/*//input[@type='checkbox']/parent::*")

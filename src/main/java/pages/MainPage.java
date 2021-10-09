@@ -6,6 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/**
+ * Главная страница
+ */
 public class MainPage extends BasePage {
 
     String primaryNav = "//nav[@data-nav='primary']/ul/li[@data-nav-parent]";
@@ -14,6 +17,12 @@ public class MainPage extends BasePage {
         super(wd);
     }
 
+    /**
+     * Переход с главной страницы в заданный раздел
+     *
+     * @param sectionName имя подраздела( Карты, Вклады..)
+     * @return страница с подменю выбранного раздела
+     */
     @Step("Перейти в раздел '{sectionName.name}'")
     public MainMenuSubPage openSection(Sections sectionName) {
         WebElement webElement = wd.findElements(By.xpath(primaryNav))

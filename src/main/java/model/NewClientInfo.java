@@ -2,13 +2,20 @@ package model;
 
 import com.github.javafaker.Faker;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.StringJoiner;
 
+/**
+ * Модель данных для формы запроса карты.
+ */
 @Getter
+@Setter
+@Accessors(chain = true)
 public class NewClientInfo {
     private String lastName;
     private String firstName;
@@ -27,6 +34,12 @@ public class NewClientInfo {
             "Пензенская область"};
     private String region;
 
+    /**
+     * Создание объекта для заполненния данных на форме запроса карты.
+     * Автоматически в поля записываются валидные значения
+     *
+     * @param withoutSecondName признак отсутствия отчества
+     */
     public NewClientInfo(boolean withoutSecondName) {
         Faker faker = new Faker(new Locale("ru-RU"));
         String[] fullName = faker.name().fullName().split(" ");

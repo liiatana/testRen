@@ -13,6 +13,9 @@ import java.lang.reflect.Method;
 
 import static java.util.Arrays.asList;
 
+/**
+ * Базовый класс для всех тестов
+ */
 public class TestBase {
     protected static final TestManager tmanager = new TestManager(System.getProperty("browser", BrowserType.CHROME));
     Logger logger = LoggerFactory.getLogger(TestBase.class);

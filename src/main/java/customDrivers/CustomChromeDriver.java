@@ -12,6 +12,9 @@ import java.util.Map;
 import static java.io.File.separator;
 import static org.openqa.selenium.chrome.ChromeOptions.CAPABILITY;
 
+/**
+ * Настройки и запуск браузера Chrome
+ */
 @Getter
 public class CustomChromeDriver {
 
