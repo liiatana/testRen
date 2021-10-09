@@ -114,7 +114,7 @@ public class BasePage {
      */
     protected File downloadFile(WebElement element, String fileName, File toFolder) throws IOException {
         if (element == null) return null;
-        scrollTo(element);
+        //scrollTo(element);
 
         File downloadLink = new File(String.format("%s/%s", toFolder.getAbsolutePath(), fileName));
 
