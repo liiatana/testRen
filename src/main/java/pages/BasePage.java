@@ -94,4 +94,19 @@ public class BasePage {
 
         return downloadLink;
     }
+
+    @Step("В выпадающем списке выбрать: {value}")
+    protected void setDropdownList(WebElement element, String value) {
+        //раскрыть выпадающий список
+        element.findElement(By.className("jq-selectbox__trigger")).click();
+
+        //найти в списке заданный элемент по соответствию текста и нажать на него
+        element
+                .findElements(By.xpath(".//div[@class='jq-selectbox__dropdown']/ul/li"))
+                .stream()
+                .filter(x -> x.getText().equalsIgnoreCase(value))
+                .findFirst()
+                .get()
+                .click();
+    }
 }

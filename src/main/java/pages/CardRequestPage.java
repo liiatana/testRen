@@ -27,6 +27,9 @@ public class CardRequestPage extends BasePage {
     @FindBy(xpath = "//*[@data-ignoreid='1']")
     private WebElement withoutSecondName;
 
+    @FindBy(id = "s2-styler")
+    private WebElement chooseRegion;
+
     public CardRequestPage(WebDriver wd) {
         super(wd);
         PageFactory.initElements(wd, this);
@@ -44,5 +47,7 @@ public class CardRequestPage extends BasePage {
 
         type(mobilePhone, newClientInfo.getMobile());
         type(email, newClientInfo.getEmail());
+
+        setDropdownList(chooseRegion, newClientInfo.getRegion());
     }
 }

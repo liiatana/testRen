@@ -3,6 +3,8 @@ package model;
 import com.github.javafaker.Faker;
 import lombok.Getter;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.StringJoiner;
 
@@ -14,6 +16,16 @@ public class NewClientInfo {
     private boolean withoutSecondName;
     private String mobile;
     private String email;
+    //правильнее было бы загружать список регионов( и их городов для второго дропдаун листа) откуда-нибудь из КЛАДР
+    // но для тестового задания оставила как есть
+    private final String[] allRegions = {
+            "Москва",
+            "Московская область",
+            "Ярославская область",
+            "Тверская область",
+            "Санкт-Петербург",
+            "Пензенская область"};
+    private String region;
 
     public NewClientInfo(boolean withoutSecondName) {
         Faker faker = new Faker(new Locale("ru-RU"));
@@ -25,6 +37,9 @@ public class NewClientInfo {
         email = (new Faker()).internet().emailAddress(); //faker.internet().emailAddress();
         this.withoutSecondName = withoutSecondName;
         if (!withoutSecondName) secondName = fullName[2];
+
+        Collections.shuffle(Arrays.asList(allRegions));
+        region = Arrays.stream(allRegions).findFirst().get();
     }
 
     @Override
@@ -32,6 +47,6 @@ public class NewClientInfo {
         StringJoiner joiner = new StringJoiner(",");
         joiner.add(lastName).add(firstName);
         if (withoutSecondName) joiner.add(secondName);
-        return joiner.add(mobile).add(email).toString();
+        return joiner.add(mobile).add(email).add(region).toString();
     }
 }
