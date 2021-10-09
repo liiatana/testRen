@@ -37,7 +37,7 @@ public class DepositRequestPage extends BasePage {
         return this;
     }
 
-    @Step("Скачать")
+    @Step("Скачать файл '{fileName}'")
     public File downloadGuide(String fileName, File toFolder) throws IOException {
         return downloadFile(wd.findElement(By.xpath(String.format("//div[@id='section_5']/*//a[contains(@href,'/%s')]", fileName))),
                 fileName,
